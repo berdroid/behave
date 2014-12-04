@@ -124,7 +124,7 @@ class Command(object):
                 print("shell.command: {0}".format(" ".join(cmdargs)))
                 print("shell.command.output:\n{0};".format(command_result.output))
         except OSError, e:
-            command_result.stderr = u"OSError: %s" % e
+            command_result.stderr = u"OSError: %s" % str(e).decode('cp1252', 'ignore')
             command_result.returncode = e.errno
             assert e.errno != 0
         return command_result
